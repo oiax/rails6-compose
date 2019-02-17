@@ -193,10 +193,10 @@ Web コンテナ上で `Ctrl-C` キーを押すと、Rails アプリケーショ
 
 ## Windowsユーザーへの注記
 
-Windows 環境では、[Docker for Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows)を使うことになりますが、次のような稼働条件があります。
+Windows 環境では、[Docker for Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows) を使うことになりますが、以下の条件を満たさないと動きません。
 
-* Windows 10 64bit: Pro, Enterprise or Education (1607 Anniversary Update, Build 14393 or later).
-* Virtualization is enabled in BIOS.
+* Windows 10 のバージョンが Pro または Enterprise または Education の 64 bit 版である。
+* BIOS の仮想化機能が有効に設定されている。
 
 つまり、個人・家庭向けの一般的なパソコンにインストールされている Windows 10 Home で Docker for Windows は動きません。Windows 10 Home では [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/) が使えるという情報もありますが、筆者の環境ではうまく動きませんでした。
 
