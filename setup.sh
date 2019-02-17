@@ -1,8 +1,6 @@
 #!/bin/bash
 set -eu
 
-docker-compose build db
-
 case "$OSTYPE" in
   darwin*)
     docker-compose build web
