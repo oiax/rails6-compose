@@ -200,9 +200,9 @@ Windows 環境では、[Docker for Windows](https://hub.docker.com/editions/comm
 
 つまり、個人・家庭向けの一般的なパソコンにインストールされている Windows 10 Home で Docker for Windows は動きません。Windows 10 Home では [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/) が使えるという情報もありますが、筆者の環境ではうまく動きませんでした。
 
-また、2019年2月現在、Docker for Windows には　[docker/for-win#1976](https://github.com/docker/for-win/issues/445) で報告されている問題が残されています。上記の Issue に対して2018年7月に[解決策](https://github.com/docker/for-win/issues/445#issuecomment-405185621)が提案されてこの Issue はクローズされています。しかし、この提案はあくまで迂回策です。同一のパソコンで複数の Rails 開発プロジェクトを進めようとすると、様々な悩ましい問題が生じるでしょう。
+また、2019年2月現在、Docker for Windows には [docker/for-win#1976](https://github.com/docker/for-win/issues/445) で報告されている問題が残されています。2018年7月に[解決策](https://github.com/docker/for-win/issues/445#issuecomment-405185621)が提案されてこの Issue はクローズされていますが、この提案はあくまで迂回策です。同一のパソコンで複数の Rails 開発プロジェクトを並行して進める場合、さまざまな悩ましい問題が生じるでしょう。
 
-以上のような状況を考えると、稼働条件を満たす Windows パソコンを持っていて、ちょっと Ruby on Rails を試してみたい場合には Docker for Windows が向いているけれども、継続的に Rails の開発・学習を行いたいのであれば、別の方法を模索すべきではないかと思われます。
+以上のような状況を考えると、稼働条件を満たす Windows パソコンを持っていて、ちょっと Ruby on Rails を試してみたい場合には Docker for Windows が向いているけれども、継続的に Rails の開発・学習を行いたいのであれば別の方法を模索すべきかもしれません。
 
 筆者がお勧めする方法は、[Oracle VM VirtualBox](https://www.virtualbox.org/) を利用して [Ubuntu](http://www.ubuntulinux.jp/) 環境を用意し、その上で Docker を使用するというものです。この方法であれば、Windows 10 Home でも動きます。
 
