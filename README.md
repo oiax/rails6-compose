@@ -21,9 +21,10 @@ Docker Compose を用いて Rails 6 アプリケーションの開発・学習�
 
 * この文書（README.md）では、Rails 6 アプリケーションの骨格を新規作成し、データベースを初期化するところまでの手順を示します。
 * 基本的に、ターミナルでコマンドを実行することで作業が進んでいきます。
-* コマンドの行頭にある `%` 記号および `$` 記号は、コマンドプロンプトを示します。ターミナルにコマンドを入力する際には、これらの記号を省いてください。
-* `%` 記号の付いたコマンドは、ホストOSのターミナルで入力してください。
-* `$` 記号の付いたコマンドは、Webコンテナのターミナルで入力してください。
+* Windows では、コマンドプロンプト（cmd.exe）でコマンドを実行してください。Git for Windows 付属の Git Bash ではうまく行きません。
+* コマンドを入力する際には、行頭にある `%` 記号および `$` 記号を省いてください。
+* `%` 記号の付いたコマンドは、ホスト OS のターミナルで入力してください。
+* `$` 記号の付いたコマンドは、Web コンテナのターミナルで入力してください。
 
 ## 設定ファイル等の取得
 
@@ -45,7 +46,7 @@ Docker Compose を用いて Rails 6 アプリケーションの開発・学習�
 ### Windows の場合
 
 ```
-% ./setup.bat
+% setup.bat
 ```
 
 ## コンテナ群の起動
@@ -59,7 +60,7 @@ Docker Compose を用いて Rails 6 アプリケーションの開発・学習�
 ### Windows の場合
 
 ```
-% ./compose.bat up -d
+% compose.bat up -d
 ```
 
 ## Webコンテナにログイン
@@ -73,7 +74,7 @@ Docker Compose を用いて Rails 6 アプリケーションの開発・学習�
 ### Windows の場合
 
 ```
-% ./compose.bat exec web bash
+% compose.bat exec web bash
 ```
 
 ## Railsアプリケーションの骨格を作る
@@ -175,7 +176,7 @@ Web コンテナ上で `Ctrl-C` キーを押すと、Rails アプリケーショ
 ### Windows の場合
 
 ```
-% ./compose.bat stop
+% compose.bat stop
 ```
 
 ## コンテナ群の破棄
@@ -189,7 +190,7 @@ Web コンテナ上で `Ctrl-C` キーを押すと、Rails アプリケーショ
 ### Windows の場合
 
 ```
-% ./compose.bat down
+% compose.bat down
 ```
 
 ## Windowsユーザーへの注記
