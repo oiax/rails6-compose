@@ -8,7 +8,19 @@ Docker Compose を用いて Rails 6 アプリケーションの開発・学習�
 * Docker Compose 1.13 以上
 * Git 2.7 以上
 
-## 注意
+## 動作確認済みのOS
+
+* macOS 10.14 Mojave
+* Ubuntu 16.04
+* Ubuntu 18.04
+
+### その他のOSに関する注記
+
+* Windows 10 Pro 64bit に関しては、[docker/for-win#1976](https://github.com/docker/for-win/issues/1976) で報告されている問題が未解決。
+* Windows 10 Home は Docker 自体が対応していない。
+* バージョン 10.13 High Sierra より古い macOS に関しては、おそらく動作すると思われるが、まだ動作確認を行なっていない。
+
+## 凡例
 
 * この文書（README.md）では、Rails 6 アプリケーションの骨格を新規作成し、データベースを初期化するところまでの手順を示します。
 * 基本的に、ターミナルでコマンドを実行することで作業が進んでいきます。
