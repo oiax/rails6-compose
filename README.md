@@ -49,6 +49,13 @@ $ rails new myapp -BJS -d postgresql
 
 ※ `myapp` の部分は適宜置き換えてください。
 
+### 指定されたオプションの説明
+
+* `-B`: `bundle install` の実行を後回しにする。
+* `-J`: JavaScriptファイル群を生成しない。
+* `-S`: Sprocketsファイル群を生成しない。
+* `-d`: 選択されたデータベース管理システム（PostgreSQL）用の設定ファイルを生成する
+
 ## ソースコードの編集
 
 * ホストOS側のテキストエディタでRailsアプリケーションのソースコードを編集します。
