@@ -130,7 +130,7 @@ default: &default
 
 ```
   host: db
-  user: postgres
+  username: postgres
   password:
 ```
 
