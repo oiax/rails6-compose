@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: postgres:11.2-alpine
+    volumes:
+      - postgres_database:/var/lib/postgresql/data
+  web:
+    build: .
+    command: /bin/sh
+    volumes:
+      - ./apps:/apps
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    tty: true
+volumes:
+  postgres_database:
+    external: true
