@@ -4,7 +4,7 @@ Docker for Windows を用いて Rails 6 アプリケーションの開発・学�
 
 ## 必要なソフトウェア
 
-* Docker for Windows 18 以上
+* Docker Desktop for Windows 18 以上
 * Git for Windows 2.20 以上
 
 ## 動作確認済みのOS
