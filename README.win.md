@@ -11,7 +11,7 @@ Docker for Windows を用いて Rails 6 アプリケーションの開発・学�
 
 * Windows 10 64bit: Pro/Enterprise/Education
 
-※ この文章の末尾にある「Windowsユーザーへの注記」を参照してください。
+※ この文章の末尾にある「Windows 10 Home ユーザーへの注記」を参照してください。
 
 ## 凡例
 
@@ -25,24 +25,37 @@ Docker for Windows を用いて Rails 6 アプリケーションの開発・学�
 ```
 > git clone https://github.com/oiax/rails6-compose.git
 > cd rails6-compose
+> cp docker-compose.win.yml docker-compose.override.yml
 ```
+
+## ボリュームの作成
+
+```
+> docker volume create --name pgdata
+```
+
+### ボリュームの作成に関する注記
+
+* 複数の Rails アプリケーション開発プロジェクトを並行して進める場合、上記コマンドの `pgdata` の部分をそれぞれ別の名前、例えば `pgdata1` と `pgdata2` で置き換える必要があります。
+* その場合、テキストエディタで `docker-compose.override.yml` を開き、`pgdata` と書かれている箇所を `pgdate1` あるいは `pgdate2` で書き換えてください。
+* macOS や Ubuntu での手順と異なり、Windows では明示的にボリュームを作成する必要があります。これは、[docker/for-win#1976](https://github.com/docker/for-win/issues/445) で報告されている問題を回避するためです。2018年7月に[解決策](https://github.com/docker/for-win/issues/445#issuecomment-405185621)が提案されて当該 Issue はクローズされていますが、いまだ根本的な解決には至っていません。
 
 ## コンテナ群の構築
 
 ```
-> setup.bat
+> docker-compose build
 ```
 
 ## コンテナ群の起動
 
 ```
-> compose.bat up -d
+> docker-compose up -d
 ```
 
 ## Web コンテナにログイン
 
 ```
-> compose.bat exec web bash
+> docker-compose exec web bash
 ```
 
 ※ ログアウトするには `exit` コマンドを実行するか、`Ctrl-D` キーを入力してください。
@@ -50,28 +63,38 @@ Docker for Windows を用いて Rails 6 アプリケーションの開発・学�
 ## コンテナ群の停止
 
 ```
-> compose.bat stop
+> docker-compose stop
 ```
 
 ## コンテナ群の破棄
 
 ```
-> compose.bat down
+> docker-compose down
 ```
 
-## Windowsユーザーへの注記
+## ボリュームの破棄
 
-Windows 環境では、[Docker for Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows) を使うことになりますが、以下の条件を満たさないと動きません。
+```
+> docker volume rm pgdata
+```
+
+## Windows 10 Home ユーザーへの注記
+
+[Docker for Windows](https://hub.docker.com/editions/community/docker-ce-desktop-windows) は、以下の条件を満たさないと動きません。
 
 * Windows 10 のバージョンが Pro または Enterprise または Education の 64 bit 版である。
 * BIOS の仮想化機能が有効に設定されている。
 
-つまり、個人・家庭向けの一般的なパソコンにインストールされている Windows 10 Home で Docker for Windows は動きません。Windows 10 Home では [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/) が使えるという情報もありますが、筆者の環境ではうまく動きませんでした。
+つまり、個人・家庭向けの一般的なパソコンにインストールされている Windows 10 Home で Docker for Windows は動きません。追加の費用を支払って Windows 10 Home を Windows 10 Pro にアップグレードする必要があります。
 
-また、2019年2月現在、Docker for Windows には [docker/for-win#1976](https://github.com/docker/for-win/issues/445) で報告されている問題が残されています。2018年7月に[解決策](https://github.com/docker/for-win/issues/445#issuecomment-405185621)が提案されてこの Issue はクローズされていますが、この提案はあくまで迂回策です。同一のパソコンで複数の Rails 開発プロジェクトを並行して進める場合、さまざまな悩ましい問題が生じるでしょう。
+そこで、Windows 10 Home ユーザーには [Oracle VM VirtualBox](https://www.virtualbox.org/) の利用をお勧めします。
 
-以上のような状況を考えると、稼働条件を満たす Windows パソコンを持っていて、ちょっと Ruby on Rails を試してみたい場合には Docker for Windows が向いているけれども、継続的に Rails の開発・学習を行いたいのであれば別の方法を模索すべきかもしれません。
+VirtualBox をインストールして、仮想マシン上に適当な Linux 系の OS（例えば、[Ubuntu](http://www.ubuntulinux.jp/)）をインストールします。そして、その上で Docker を使用するのです。
 
-筆者がお勧めする方法は、[Oracle VM VirtualBox](https://www.virtualbox.org/) を利用して [Ubuntu](http://www.ubuntulinux.jp/) 環境を用意し、その上で Docker を使用するというものです。この方法であれば、Windows 10 Home でも動きます。
+VirtualBox 上の仮想マシンは 1 台ですが、その上で複数のコンテナを起動できるので、複数の Rails 開発プロジェクトを並行して進めたり、多数のコンテナから構成される複雑なシステムを組んだりできます。
 
 ちなみに、Windows パソコンに「デュアルブート」方式で Ubuntu 等をインストールすることも可能ですが、一般的には推奨できません。ハードウェア構成によっては非常に難しい作業を行うことになります。Windows 自体に深刻な悪影響を与える可能性もあります。
+
+### Docker Toolbox について
+
+Windows 10 Home では [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/) が使えるという情報もありますが、筆者の環境ではうまく動きませんでした。
