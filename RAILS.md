@@ -17,7 +17,7 @@
 
 ## Railsアプリケーションの骨格を作る
 
-Webコンテナにログインして以下のコマンド群を実行します。
+Web コンテナにログインして以下のコマンド群を実行します。
 
 ```
 $ cd /apps
@@ -87,7 +87,7 @@ default: &default
   password:
 ```
 
-※ 各行の先頭に半角スペースを2個置いてください。
+※ 各行の先頭に半角スペースを 2 個置いてください。
 
 ## Rails アプリケーションのセットアップ
 
@@ -134,6 +134,8 @@ import "../stylesheets/scaffold.css";
 
 ## Scaffold の作成
 
+ここまでの作業がうまく進んでいることを確認するため、簡単なユーザー管理をする Scaffold を作ります。
+
 Web コンテナで以下のコマンド群を実行します。
 
 ```
@@ -141,7 +143,7 @@ $ bin/rails g scaffold user name:string
 $ bin/rails db:migrate
 ```
 
-2番目のコマンドを実行した結果、ターミナルに次のように表示されればOKです。ただし、数字の部分は異なります。
+2 番目のコマンドを実行した結果、ターミナルに次のように表示されれば OK です。ただし、数字の部分は異なります。
 
 ```
 == 20190219014032 CreateUsers: migrating ======================================
@@ -152,7 +154,7 @@ $ bin/rails db:migrate
 
 ## Rails アプリケーションの起動
 
-ホストOSで別のターミナルを開き、次のコマンドを実行します。
+ホスト OS で別のターミナルを開き、次のコマンドを実行します。
 
 ```
 % docker-compose exec web bash -c 'cd /apps/myapp; bin/webpack-dev-server'
@@ -168,13 +170,22 @@ $ bin/rails db:migrate
 
 ホスト OS 側のブラウザで http://localhost:3000/users を開き、「Users」というタイトルのページが開くことを確認します。そして、ユーザーの追加、編集、削除ができることを確認します。
 
+## Scaffold の破棄
+
+動作検証のために作った Scaffold を破棄するため、Web コンテナで以下のコマンド群を実行してください。
+
+```
+$ bin/rails db:rollback
+$ bin/rails d scaffold user
+```
+
 ## Rails アプリケーションの停止
 
 Rails アプリケーション起動のために開いたふたつのターミナルでそれぞれ `Ctrl-C` キーを押すと、Rails アプリケーションが停止します。
 
 ## コンテナ群の停止
 
-開発作業を終えてパソコンの電源を切る前に Db コンテナと Web コンテナを停止します。
+開発作業を終えてパソコンの電源を切る前に DB コンテナと Web コンテナを停止します。
 
 ```
 % docker-compose stop
