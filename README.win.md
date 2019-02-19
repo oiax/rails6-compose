@@ -43,6 +43,7 @@ Docker for Windows を用いて Rails 6 アプリケーションの開発・学�
 ## コンテナ群の構築
 
 ```
+> docker pull oiax/rails6-deps:latest
 > docker-compose build
 ```
 

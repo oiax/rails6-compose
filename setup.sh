@@ -1,6 +1,8 @@
 #!/bin/bash
 set -eu
 
+docker pull oiax/rails6-deps:latest
+
 case "$OSTYPE" in
   darwin*)
     docker-compose build web
