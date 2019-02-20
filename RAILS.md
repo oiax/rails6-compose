@@ -154,16 +154,18 @@ $ bin/rails db:migrate
 
 ## Rails アプリケーションの起動
 
-ホスト OS で別のターミナルを開き、次のコマンドを実行します。
+ホスト OS で別のターミナルを開き、Web コンテナにログインして以下のコマンド群を実行します。
 
 ```
-% docker-compose exec web bash -c 'cd /apps/myapp; bin/webpack-dev-server'
+$ cd /apps/myapp
+$ bin/webpack-dev-server
 ```
 
-さらに別のターミナルを開き、次のコマンドを実行します。
+ホスト OS でさらに別のターミナルを開き、Web コンテナにログインして以下のコマンド群を実行します。
 
 ```
-% docker-compose exec web bash -c 'cd /apps/myapp; bin/rails s'
+$ cd /apps/myapp
+$ bin/rails s
 ```
 
 ## ブラウザで動作確認
