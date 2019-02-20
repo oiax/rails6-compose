@@ -3,12 +3,14 @@ set -eu
 
 docker pull oiax/rails6-deps:latest
 
+BUILD_CMD="docker-compose build --no-cache"
+
 case "$OSTYPE" in
   darwin*)
-    docker-compose build web
+    $BUILD_CMD web
     ;;
   linux*)
-    docker-compose build --build-arg UID=$(id -u) --build-arg GID=$(id -g) web
+    $BUILD_CMD --build-arg UID=$(id -u) --build-arg GID=$(id -g) web
     ;;
   *)
     echo "Unknown OS Type: $OSTYPE"
