@@ -22,6 +22,7 @@ USER devel
 RUN openssl rand -hex 64 > /home/devel/.secret_key_base
 
 RUN echo $'export EDITOR=vim\n\
+export RAILS_SERVE_STATIC_FILES=1\n\
 export SECRET_KEY_BASE=$(cat /home/devel/.secret_key_base)' \
   >> /home/devel/.bashrc
 
