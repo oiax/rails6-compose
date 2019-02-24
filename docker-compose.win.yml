@@ -7,6 +7,10 @@ services:
   web:
     build: .
     command: /bin/sh
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: "0.0.0.0"
+      RAILS_SERVE_STATIC_FILES: "1"
+      EDITOR: "vim"
     volumes:
       - ./apps:/apps
     ports:
