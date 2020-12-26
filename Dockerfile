@@ -24,3 +24,4 @@ RUN echo $'export SECRET_KEY_BASE=$(cat /home/devel/.secret_key_base)' \
   >> /home/devel/.bashrc
 
 WORKDIR /apps
+
