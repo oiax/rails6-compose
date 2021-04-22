@@ -15,7 +15,7 @@ RUN bundle install
 
 COPY ./apps /apps
 
-RUN apk add --no-cache openssl
+RUN apk add --no-cache openssl shared-mime-info
 
 USER devel
 
